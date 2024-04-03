@@ -48,9 +48,9 @@ form.addEventListener('submit', (event) => {
   }
 
   // Password Validation
-  if (passwordInput.value.length < 8 || (passwordInput.value.toLowerCase() === 'password' || passwordInput.value === 'Password')) {
+  if (passwordInput.value.length < 8 || (passwordInput.value.toLowerCase() === fullNameInput.value.toLowerCase() || passwordInput.value === 'Password' || passwordInput.value === 'password')) {
     isValid = false;
-    passwordError.textContent = 'Password must be at least 8 characters long and cannot be "Password" or "password".';
+    passwordError.textContent = 'Password must be at least 8 characters long and cannot be "Password", "password", or the same as your full name.';
     passwordInput.classList.add('invalid');
   } else {
     passwordError.textContent = '';
@@ -68,15 +68,17 @@ form.addEventListener('submit', (event) => {
   }
 
   if (isValid) {
+    // Redirect to a new page after successful validation
+    window.location.href = "success.html"; 
     alert('Form submitted successfully!');
   }
 });
 
 // hover effect for submit button
 submitButton.addEventListener('mouseover', () => {
-  submitButton.style.backgroundColor = '#004a95'; 
+  submitButton.style.backgroundColor = '#004a95';
 });
 
 submitButton.addEventListener('mouseout', () => {
-  submitButton.style.backgroundColor = '#007bff'; 
+  submitButton.style.backgroundColor = '#007bff';
 });
